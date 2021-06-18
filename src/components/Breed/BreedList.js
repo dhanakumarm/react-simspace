@@ -27,18 +27,16 @@ const BreedList = () => {
     dispatch(getBreedImages(event.target.value));
   };
 
-  let content = <p>No Records found</p>;
-
-  if (!loading && errors.isError) {
-    content = <p>{errors.errors}</p>;
+  if (errors.isError) {
+    return <p>No record found</p>;
   }
 
-  if (loading && !errors.isError) {
-    content = <p>Loading</p>;
+  if (loading) {
+    return <p>Loading</p>;
   }
 
-  if (!loading && !errors.isError && breedList.length !== 0) {
-    content = breedList.map((data, index) => (
+  if (breedList.length !== 0) {
+    return breedList.map((data, index) => (
       <BreedButton
         key={data}
         onClick={breedClickHandler}
@@ -49,10 +47,9 @@ const BreedList = () => {
       </BreedButton>
     ));
   }
-  if (!loading && !errors.isError && breedList.length === 0) {
-    content = <p>No breed matches found!</p>;
+  if (breedList.length === 0) {
+    return <p>No breed matches found!</p>;
   }
-  return <React.Fragment>{content}</React.Fragment>;
 };
 
 export default BreedList;
