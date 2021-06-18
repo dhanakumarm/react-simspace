@@ -35,10 +35,8 @@ const BreedImageList = (props) => {
     display: ${imgloading && !loading ? "block" : "none"};
   `;
 
-  let content = "";
-
   if (!errors.isError) {
-    content = (
+    return (
       <React.Fragment>
         <LoadingWrapper>
           <p>Loading...</p>
@@ -59,10 +57,8 @@ const BreedImageList = (props) => {
   }
 
   if (errors.isError) {
-    content = <p>{errors.errors}</p>;
+    return <p>{errors.errors}</p>;
   }
-
-  return <React.Fragment>{content}</React.Fragment>;
 };
 
 export default BreedImageList;

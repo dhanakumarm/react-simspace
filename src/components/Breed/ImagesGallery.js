@@ -2,13 +2,13 @@ import React from "react";
 
 import classes from "./ImagesGallery.module.css";
 
-const ImageGallery = (props) => {
+const ImageGallery = ({ imgUrl, imgOnload }) => {
   return (
-    <React.Fragment>
+    <>
       <div className={classes.column}>
-        <img src={props.imgUrl} alt="" onLoad={props.imgOnload} />
+        <img src={imgUrl} alt="" onLoad={imgOnload} />
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
